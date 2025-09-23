@@ -40,8 +40,6 @@ git clone https://github.com/<your-username>/CrawlCraft.git
 cd CrawlCraft
 ```
 
-````
-
 ### 2. Create a virtual environment
 
 **Option 1: Using `venv` (standard Python)**
@@ -166,5 +164,3 @@ scrapy crawl example -o output.json
 ---
 
 Happy Crawling! 🕷️🚀
-
-````
