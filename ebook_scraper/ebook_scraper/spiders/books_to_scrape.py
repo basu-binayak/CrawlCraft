@@ -22,11 +22,15 @@ class BooksToScrapeSpider(scrapy.Spider):
                 'title' : book.css("h3 > a::attr(title)").get(),
                 
                 # Get book price (text inside <p class="price_color">)
-                'price' : book.css("p.price_color::text").get(), # get() returns the first match
+                'price' : book.css("p.price_color::text").get()[1:], # get() returns the first match
                 
                 # Get availability status
                 # .getall() returns a list of all texts, the last item contains availability info
                 # .strip() removes any extra spaces or newline characters
-                'availability' : book.css("p.availability::text").getall()[-1].strip()
+                'availability' : book.css("p.availability::text").getall()[-1].strip(),
+                
+                # Get the ratings 
+                # The rating is a class itself i.e. <p class="star-rating Three"> and alll we want is the Three
+                'rating': book.css("p.star-rating::attr(class)").get().split(' ')[-1]
             }
         
